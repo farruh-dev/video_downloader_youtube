@@ -1,0 +1,19 @@
+{
+  "name": "video_downloader_youtube",
+  "version": "1.0.0",
+  "description": "download video from youtube using url adress",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "video_downloader_-youtube-"
+  },
+  "author": "Farrukh Olimov",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "ytdl-core": "^4.9.0"
+  }
+}
