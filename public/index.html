@@ -22,9 +22,11 @@
             </div>
 
             <div class="form">
+                <div class="form-item">
                     <label for="videoUrl">Enter url adress of a video to download</label>
                     <input type="text" id="videoUrl">
-                    <button type="button" id="get-info-btn">Info</button>
+                </div>
+                <button type="button" id="get-info-btn">Find</button>
             </div>
             <div class="video-data">
                 <div class="data">
@@ -33,7 +35,8 @@
                     </div>
                     <div class="info">
                         <h3 class="vidTitle">Lorem, ipsum dolor.</h3>
-                        <p class='description'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, sint.</p>
+                        <p class='description'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, sint.
+                        </p>
                     </div>
                 </div>
                 <div class="controls">
@@ -74,8 +77,8 @@
 
                 let html = '';
 
-                for(let i = 0; i < data.formats.length; i++){
-                    if(data.formats[i].container != 'mp4'){
+                for (let i = 0; i < data.formats.length; i++) {
+                    if (data.formats[i].container != 'mp4') {
                         continue;
                     }
                     html += `
@@ -83,14 +86,15 @@
                         ${data.formats[i].container} - ${data.formats[i].qualityLabel}
                     </option>`;
 
-                    detailsNodes.thumbnail.src = data.videoDetails.thumbnails[data.videoDetails.thumbnails.length - 1].url;
+                    detailsNodes.thumbnail.src = data.videoDetails.thumbnails[data.videoDetails
+                        .thumbnails.length - 1].url;
                     detailsNodes.title.innerText = data.videoDetails.title;
                     detailsNodes.description.innerText = data.videoDetails.description;
                     detailsNodes.videoURL = videoURL;
                     detailsNodes.downloadOpts.innerHTML = html;
 
-                    
-                    
+
+
                 }
             }).catch(err => {
                 alert('Something went wrong...')
