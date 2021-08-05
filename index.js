@@ -4,8 +4,8 @@ const ytdl = require('ytdl-core')
 const path = require('path')
 const app = express()
 
-// app.use(express.json())
-// app.use(express.static('public'))
+app.use(express.json())
+app.use(express.static('public'))
 
 app.get("/", (req, res) =>{
     const filePath = path.join(__dirname, 'public', 'index.html')

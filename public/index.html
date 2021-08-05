@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/style.css">
     <title>Video downloader</title>
 </head>
 
@@ -53,34 +54,34 @@
                 return res.json();
             }).then(data => {
                 console.log(data);
-                // let detailsNodes = {
-                //     thumbnail: document.querySelector('.thumbnail img'),
-                //     title: document.querySelector('.vidTitle'),
-                //     description: document.querySelector('.description'),
-                //     videoURL: document.querySelector('#video-url'),
-                //     downloadOpts: document.querySelector('#downloadOptions')
-                // }
+                let detailsNodes = {
+                    thumbnail: document.querySelector('.thumbnail img'),
+                    title: document.querySelector('.vidTitle'),
+                    description: document.querySelector('.description'),
+                    videoURL: document.querySelector('#video-url'),
+                    downloadOpts: document.querySelector('#downloadOptions')
+                }
 
-                // let html = '';
+                let html = '';
 
-                // for(let i = 0; i < data.formats.length; i++){
-                //     if(data.formats[i].container != 'mp4'){
-                //         continue;
-                //     }
-                //     html += `
-                //     <option value="${data.formats[i].itag}">
-                //         ${data.formats[i].container} - ${data.formats[i].qualityLabel}
-                //     </option>`;
+                for(let i = 0; i < data.formats.length; i++){
+                    if(data.formats[i].container != 'mp4'){
+                        continue;
+                    }
+                    html += `
+                    <option value="${data.formats[i].itag}">
+                        ${data.formats[i].container} - ${data.formats[i].qualityLabel}
+                    </option>`;
 
-                //     detailsNodes.thumbnail.src = data.videoDetails.thumbnails[data.videoDetails.thumbnails.length - 1].url;
-                //     detailsNodes.title.innerText = data.videoDetails.thumbnails;
-                //     detailsNodes.description.innerText = data.videoDetails.description;
-                //     detailsNodes.videoURL = videoURL;
-                //     detailsNodes.downloadOpts.innerHTML = html;
+                    detailsNodes.thumbnail.src = data.videoDetails.thumbnails[data.videoDetails.thumbnails.length - 1].url;
+                    detailsNodes.title.innerText = data.videoDetails.title;
+                    detailsNodes.description.innerText = data.videoDetails.description;
+                    detailsNodes.videoURL = videoURL;
+                    detailsNodes.downloadOpts.innerHTML = html;
 
                     
                     
-                // }
+                }
             }).catch(err => {
                 alert('Something went wrong...')
             })
