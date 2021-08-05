@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video downloader</title>
 </head>
+
 <body>
     <div class="header">
         <h1>Yotube video downloader</h1>
@@ -21,12 +23,69 @@
     </div>
     <div class="video-data">
         <div class="data">
-            <img src="" alt="">
+            <div class="thumbnail">
+                <img src="" alt="">
+            </div>
+            <div class="info">
+                <h3 class="vidTitle">Lorem, ipsum dolor.</h3>
+                <p class='description'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, sint.</p>
+            </div>
         </div>
-        <div class="thumbnail">
-            <h3>Lorem, ipsum dolor.</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, sint.</p> 
+        <div class="controls">
+            <input type="hidden" id="video-url">
+            <select id="downloadOptions"></select>
+            <button id="downloadBtn">Download</button>
         </div>
     </div>
+
+    <script type="text/javascript">
+        const host = 'http://localhost:5000/';
+        const videoInfo = document.querySelector('#get-info-btn')
+        const videoUrl = document.querySelector('#videoUrl')
+
+        videoInfo.addEventListener('click', () => {
+            let videoURL = videoUrl.value.trim();
+            if (!videoURL) {
+                alert('Input youtube link first')
+                return;
+            }
+            fetch(host + 'videoInfo?videoURL=' + videoURL).then(res => {
+                return res.json();
+            }).then(data => {
+                console.log(data);
+                // let detailsNodes = {
+                //     thumbnail: document.querySelector('.thumbnail img'),
+                //     title: document.querySelector('.vidTitle'),
+                //     description: document.querySelector('.description'),
+                //     videoURL: document.querySelector('#video-url'),
+                //     downloadOpts: document.querySelector('#downloadOptions')
+                // }
+
+                // let html = '';
+
+                // for(let i = 0; i < data.formats.length; i++){
+                //     if(data.formats[i].container != 'mp4'){
+                //         continue;
+                //     }
+                //     html += `
+                //     <option value="${data.formats[i].itag}">
+                //         ${data.formats[i].container} - ${data.formats[i].qualityLabel}
+                //     </option>`;
+
+                //     detailsNodes.thumbnail.src = data.videoDetails.thumbnails[data.videoDetails.thumbnails.length - 1].url;
+                //     detailsNodes.title.innerText = data.videoDetails.thumbnails;
+                //     detailsNodes.description.innerText = data.videoDetails.description;
+                //     detailsNodes.videoURL = videoURL;
+                //     detailsNodes.downloadOpts.innerHTML = html;
+
+                    
+                    
+                // }
+            }).catch(err => {
+                alert('Something went wrong...')
+            })
+        })
+    </script>
 </body>
+
 </html>
