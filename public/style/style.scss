@@ -10,20 +10,50 @@ body {
     background-attachment: fixed;
     background-size: cover;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+    overflow: auto;
+    /* this will hide the scrollbar in mozilla based browsers */
+    overflow: -moz-scrollbars-none;
+    scrollbar-width: none;
+    /* this will hide the scrollbar in internet explorers */
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+        width: 0 !important;
+        display: none;
+    }
+}
+
+
+
+ul,
+ol {
+    list-style: none;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
 }
 
 #mainSection {
 
-    height: 100%;
+    min-height: calc(100vh / 1.11);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    margin-top: 0;
 
     .header {
-        margin: 30px auto 100px 50px;
+        margin-bottom: 100px;
         color: #fff;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
+
     .container {
         display: flex;
         align-items: center;
@@ -40,12 +70,13 @@ body {
             padding: 30px;
             background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(5px);
-            border-top-left-radius: 50px;
-            border-bottom-right-radius: 50px;
-            border-top-right-radius: 10px;
-            border-bottom-left-radius: 10px;
-            width: 50%;
-            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            // border-top-left-radius: 50px;
+            // border-bottom-right-radius: 50px;
+            // border-top-right-radius: 10px;
+            // border-bottom-left-radius: 10px;
+            border-radius: 15px;
+            width: 60%;
+            // box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 
             .form-item {
                 width: 70%;
@@ -77,18 +108,18 @@ body {
                 height: 50px;
                 outline: none;
                 border: none;
-                background-color: #E8FF8F;
-                color: #1838EE;
+                background-color: transparent;
+                backdrop-filter: blur(100px);
+                color: #fff;
                 border-radius: 25px;
                 padding: 5px;
                 font-size: 16px;
-                border: 1px solid transparent;
+                border: 1px solid #fff;
 
-                &:hover{
-                    background-color: transparent;
-                    color: #fff;
-                    border-color: #E8FF8F;
-                    backdrop-filter: blur(100px);
+                &:hover {
+                    background-color: #E8FF8F;
+                    color: #1838ee;
+                    
                 }
 
             }
@@ -96,7 +127,7 @@ body {
         }
 
         .video-data {
-            display: none;
+            display: flex;
             align-items: center;
             justify-content: center;
             padding: 30px;
@@ -132,14 +163,15 @@ body {
                 display: flex;
                 justify-content: space-between;
 
-                #downloadOptions{
+                #downloadOptions {
                     width: 130px;
                     height: 50px;
                     outline: none;
                     border: none;
                     background-color: transparent;
                     color: #1838EE;
-                    border-radius: 25px;
+                    border-top-left-radius: 25px;
+                    border-bottom-left-radius: 25px;
                     padding: 5px;
                     font-size: 16px;
                     border: 1px solid #fff;
@@ -152,18 +184,62 @@ body {
                     border: none;
                     background-color: #E8FF8F;
                     color: #1838EE;
-                    border-radius: 25px;
+                    border-top-right-radius: 25px;
+                    border-bottom-right-radius: 25px;
                     padding: 5px;
                     font-size: 16px;
                     border: 1px solid transparent;
-    
-                    &:hover{
+
+                    &:hover {
                         background-color: transparent;
                         color: #fff;
                         border-color: #E8FF8F;
                         backdrop-filter: blur(100px);
                     }
-    
+
+                }
+            }
+        }
+    }
+}
+
+.footer {
+    margin-top: auto;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px);
+    padding: 25px 0;
+    color: #fff;
+
+    .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        .links {
+            width: 200px;
+            margin-bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            flex-direction: row;
+
+            .link {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                font-size: 20px;
+
+                i {
+                    color: #fff;
+                }
+
+                &:hover {
+                    background: rgba(255, 255, 255, 0.2);
+                    backdrop-filter: blur(100px);
                 }
             }
         }
