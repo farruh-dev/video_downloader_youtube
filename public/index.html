@@ -23,11 +23,25 @@
             <div class="form">
                 <div class="form-item">
                     <label for="videoUrl">Enter link of video</label>
-                    <input type="text" id="videoUrl">
+                    <input onClick="this.select();" type="text" id="videoUrl">
                 </div>
                 <button type="button" id="get-info-btn">Find</button>
             </div>
             <div class="video-data">
+                <div class="howtouse">
+                    <h4>How to use...</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit obcaecati mollitia beatae aut, debitis totam rerum cum et accusamus nulla explicabo, quod eveniet minima voluptate praesentium laborum nesciunt vel perspiciatis?</p>
+                </div>
+                <div class="loadBox">
+                    <div class="loader">
+                        <div class="loader__bar"></div>
+                        <div class="loader__bar"></div>
+                        <div class="loader__bar"></div>
+                        <div class="loader__bar"></div>
+                        <div class="loader__bar"></div>
+                        <div class="loader__ball"></div>
+                    </div>
+                </div>
                 <div class="data">
                     <div class="thumbnail">
                         <img src="" alt="">
@@ -40,7 +54,7 @@
                 </div>
                 <div class="controls">
                     <input type="hidden" id="video-url">
-                    <div class="btn-group" role="group" >
+                    <div class="btn-group" role="group">
                         <select id="downloadOptions"></select>
                         <button id="downloadBtn">Download</button>
                     </div>
@@ -77,8 +91,24 @@
         const host = 'http://localhost:5000/';
         const videoInfo = document.querySelector('#get-info-btn')
         const videoUrl = document.querySelector('#videoUrl')
+        const downloadBtn = document.querySelector('#downloadBtn')
+        const downloadOptions = document.querySelector('#downloadOptions')
+        const videoData = document.querySelector('.data')
+        const dataSection = document.querySelector('.video-data')
+        const controls = document.querySelector('.controls')
+        const howtouse = document.querySelector('.howtouse')
+        const loader = document.querySelector('.loadBox')
 
-        videoInfo.addEventListener('click', () => {
+        videoInfo.addEventListener('click', fetchHandler)
+        
+        async function fetchHandler(){
+            if(videoData.style.display == 'flex' || controls.style.display == 'flex'){
+                videoData.style.display = 'none'
+                controls.style.display = 'none'
+            }
+            dataSection.style.height = '185px'
+            howtouse.style.display = 'none'
+            displayLoading()
             let videoURL = videoUrl.value.trim();
             if (!videoURL) {
                 alert('Input youtube link first')
@@ -87,6 +117,11 @@
             fetch(host + 'videoInfo?videoURL=' + videoURL).then(res => {
                 return res.json();
             }).then(data => {
+                dataSection.style.height = 'auto'
+                hideLoading()
+                videoData.style.display = 'flex'
+                controls.style.display = 'flex'
+
                 console.log(data);
                 let detailsNodes = {
                     thumbnail: document.querySelector('.thumbnail img'),
@@ -103,24 +138,36 @@
                         continue;
                     }
                     html += `
-                    <option value="${data.formats[i].itag}">
-                        ${data.formats[i].container} - ${data.formats[i].qualityLabel}
-                    </option>`;
+                        <option value="${data.formats[i].itag}">
+                            ${data.formats[i].container} - ${data.formats[i].qualityLabel}
+                        </option>`;
 
                     detailsNodes.thumbnail.src = data.videoDetails.thumbnails[data.videoDetails
                         .thumbnails.length - 1].url;
                     detailsNodes.title.innerText = data.videoDetails.title;
                     detailsNodes.description.innerText = data.videoDetails.description;
-                    detailsNodes.videoURL = videoURL;
+                    detailsNodes.videoURL.value = videoURL;
                     detailsNodes.downloadOpts.innerHTML = html;
-
-
 
                 }
             }).catch(err => {
                 alert('Something went wrong...')
             })
+        }
+
+        downloadBtn.addEventListener('click', () =>{
+            let videoURL = document.querySelector('#video-url').value;
+            let itag = downloadOptions.value;
+            window.open(host + "download?videoURL="+videoURL+"&itag="+itag);
+
         })
+
+        function displayLoading() {
+            loader.classList.add('display')
+        }
+        function hideLoading() {
+            loader.classList.remove('display')
+        }
     </script>
 </body>
 
