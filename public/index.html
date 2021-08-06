@@ -30,7 +30,11 @@
             <div class="video-data">
                 <div class="howtouse">
                     <h4>How to use...</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit obcaecati mollitia beatae aut, debitis totam rerum cum et accusamus nulla explicabo, quod eveniet minima voluptate praesentium laborum nesciunt vel perspiciatis?</p>
+                    <p>Copy the link of video you want to install and paste it on area above. Click "Find" button to
+                        find the video. Then here will be displayed information about the video. And below you can see
+                        Download button. Before you download you can choose quality of video if you want. After you
+                        choose cklick download button, this might take a while. And after all you can open the video and
+                        enjoy watching...)</p>
                 </div>
                 <div class="loadBox">
                     <div class="loader">
@@ -47,17 +51,15 @@
                         <img src="" alt="">
                     </div>
                     <div class="info">
-                        <h3 class="vidTitle">Lorem, ipsum dolor.</h3>
-                        <p class='description'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, sint.
+                        <h3 class="vidTitle"></h3>
+                        <p class='description'>
                         </p>
                     </div>
                 </div>
                 <div class="controls">
                     <input type="hidden" id="video-url">
-                    <div class="btn-group" role="group">
-                        <select id="downloadOptions"></select>
-                        <button id="downloadBtn">Download</button>
-                    </div>
+                    <select id="downloadOptions"></select>
+                    <button id="downloadBtn">Download</button>
                 </div>
             </div>
         </div>
@@ -68,7 +70,7 @@
             <span>Made with 💙 by Farrukh Olimov</span>
             <ul class="links">
                 <li class="link">
-                    <a href=""><i class="fab fa-telegram-plane"></i></a>
+                    <a href="https://t.me/ulugbekovich_f"><i class="fab fa-telegram-plane"></i></a>
                 </li>
                 <li class="link">
                     <a href=""><i class="fab fa-instagram"></i></a>
@@ -100,12 +102,16 @@
         const loader = document.querySelector('.loadBox')
 
         videoInfo.addEventListener('click', fetchHandler)
-        
-        async function fetchHandler(){
-            if(videoData.style.display == 'flex' || controls.style.display == 'flex'){
+
+        async function fetchHandler() {
+            if (videoData.style.display == 'flex' || controls.style.display == 'flex') {
                 videoData.style.display = 'none'
                 controls.style.display = 'none'
             }
+            if (document.querySelector('.header').style.paddingTop) {
+                document.querySelector('.header').style.paddingTop = '0'
+            }
+
             dataSection.style.height = '185px'
             howtouse.style.display = 'none'
             displayLoading()
@@ -119,6 +125,7 @@
             }).then(data => {
                 dataSection.style.height = 'auto'
                 hideLoading()
+                document.querySelector('.header').style.paddingTop = '150px'
                 videoData.style.display = 'flex'
                 controls.style.display = 'flex'
 
@@ -155,16 +162,17 @@
             })
         }
 
-        downloadBtn.addEventListener('click', () =>{
+        downloadBtn.addEventListener('click', () => {
             let videoURL = document.querySelector('#video-url').value;
             let itag = downloadOptions.value;
-            window.open(host + "download?videoURL="+videoURL+"&itag="+itag);
+            window.open(host + "download?videoURL=" + videoURL + "&itag=" + itag);
 
         })
 
         function displayLoading() {
             loader.classList.add('display')
         }
+
         function hideLoading() {
             loader.classList.remove('display')
         }

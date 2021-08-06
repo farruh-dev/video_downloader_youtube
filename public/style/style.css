@@ -50,6 +50,8 @@ a {
       -ms-flex-direction: column;
           flex-direction: column;
   margin-top: 0;
+  -webkit-transition: all 1s;
+  transition: all 1s;
 }
 
 #mainSection .header {
@@ -65,6 +67,8 @@ a {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-transition: all 1s;
+  transition: all 1s;
 }
 
 #mainSection .container {
@@ -82,6 +86,8 @@ a {
       -ms-flex-direction: column;
           flex-direction: column;
   position: relative;
+  -webkit-transition: all 1s;
+  transition: all 1s;
 }
 
 #mainSection .container .form {
@@ -104,11 +110,15 @@ a {
           backdrop-filter: blur(5px);
   border-radius: 15px;
   width: 60%;
+  -webkit-transition: all 1s;
+  transition: all 1s;
 }
 
 #mainSection .container .form .form-item {
   width: 70%;
   position: relative;
+  -webkit-transition: all 1s;
+  transition: all 1s;
 }
 
 #mainSection .container .form .form-item label {
@@ -123,10 +133,14 @@ a {
   width: 100%;
   height: 50px;
   outline: none;
-  border: 1px solid orangered;
+  border: 1px solid transparent;
   border-radius: 25px;
   padding: 15px;
   font-size: 16px;
+}
+
+#mainSection .container .form .form-item #videoUrl:focus {
+  border-color: orangered;
 }
 
 #mainSection .container .form #get-info-btn {
@@ -142,11 +156,15 @@ a {
   padding: 5px;
   font-size: 16px;
   border: 1px solid #fff;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 #mainSection .container .form #get-info-btn:hover {
-  background-color: #E8FF8F;
-  color: #1838ee;
+  background-color: #355fe4;
+  border-color: #355fe4;
+  -webkit-box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
 }
 
 #mainSection .container .video-data {
@@ -173,6 +191,8 @@ a {
   border-radius: 20px;
   color: #fff;
   position: relative;
+  -webkit-transition: all  1s !important;
+  transition: all  1s !important;
 }
 
 #mainSection .container .video-data .display {
@@ -269,6 +289,8 @@ a {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-transition: all  1s;
+  transition: all  1s;
 }
 
 #mainSection .container .video-data .thumbnail img {
@@ -279,6 +301,8 @@ a {
 
 #mainSection .container .video-data .info {
   margin-top: 10px;
+  -webkit-transition: all  1s;
+  transition: all  1s;
 }
 
 #mainSection .container .video-data .info h2 {
@@ -302,6 +326,8 @@ a {
       -ms-flex-direction: column;
           flex-direction: column;
   width: 100% !important;
+  -webkit-transition: all  1s;
+  transition: all  1s;
 }
 
 #mainSection .container .video-data .controls {
@@ -320,11 +346,16 @@ a {
   border: none;
   background-color: transparent;
   color: #1838EE;
-  border-top-left-radius: 25px;
-  border-bottom-left-radius: 25px;
+  border-radius: 25px;
   padding: 5px;
   font-size: 16px;
   border: 1px solid #fff;
+  color: #505050;
+  -webkit-backdrop-filter: blur(100px);
+          backdrop-filter: blur(100px);
+  margin-left: auto;
+  padding: 0 10px;
+  cursor: pointer;
 }
 
 #mainSection .container .video-data .controls #downloadBtn {
@@ -332,21 +363,27 @@ a {
   height: 50px;
   outline: none;
   border: none;
-  background-color: #E8FF8F;
-  color: #1838EE;
-  border-top-right-radius: 25px;
-  border-bottom-right-radius: 25px;
+  background-color: #355fe4;
+  -webkit-backdrop-filter: blur(100px);
+          backdrop-filter: blur(100px);
+  color: #fff;
+  border-radius: 25px;
   padding: 5px;
   font-size: 16px;
   border: 1px solid transparent;
+  margin-left: 30px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 #mainSection .container .video-data .controls #downloadBtn:hover {
   background-color: transparent;
   color: #fff;
   border-color: #E8FF8F;
-  -webkit-backdrop-filter: blur(100px);
-          backdrop-filter: blur(100px);
+  -webkit-box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
 }
 
 .footer {
