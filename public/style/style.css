@@ -212,10 +212,62 @@ a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-transition: opacity 1.2s !important;
   transition: opacity 1.2s !important;
   z-index: -1;
   opacity: 0;
+  text-align: center;
+}
+
+#mainSection .container .video-data .loadBox .wait {
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
+  -webkit-animation: blink 1.6s linear infinite;
+          animation: blink 1.6s linear infinite;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+  opacity: 1;
+}
+
+@-webkit-keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: .5;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: .5;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 #mainSection .container .video-data .loadBox .loader {
@@ -343,28 +395,24 @@ a {
 #mainSection .container .video-data .controls {
   margin-top: 20px;
   display: none;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   width: 100% !important;
 }
 
 #mainSection .container .video-data .controls #downloadOptions {
-  width: 130px;
   height: 50px;
   outline: none;
   border: none;
-  background-color: transparent;
-  color: #1838EE;
   border-radius: 25px;
   padding: 5px;
   font-size: 16px;
   border: 1px solid #fff;
-  color: #505050;
-  -webkit-backdrop-filter: blur(100px);
-          backdrop-filter: blur(100px);
+  color: #aaaaab;
+  background: rgba(255, 255, 255, 0.1);
   margin-left: auto;
-  padding: 0 10px;
+  padding: 0 1.5rem;
   cursor: pointer;
 }
 
@@ -453,6 +501,9 @@ a {
   height: 40px;
   border-radius: 50%;
   font-size: 20px;
+  cursor: pointer;
+  -webkit-transition: background-color 0.4s;
+  transition: background-color 0.4s;
 }
 
 .footer .container .links .link i {
@@ -460,7 +511,7 @@ a {
 }
 
 .footer .container .links .link:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.2);
   -webkit-backdrop-filter: blur(100px);
           backdrop-filter: blur(100px);
 }
