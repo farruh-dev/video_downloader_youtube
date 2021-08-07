@@ -3,9 +3,11 @@ const http = require('http')
 const ytdl = require('ytdl-core')
 const path = require('path')
 const app = express()
+const cors = require('cors')
 
 app.use(express.json())
 app.use(express.static('public'))
+app.use(cors())
 
 app.get("/", (req, res) =>{
     const filePath = path.join(__dirname, 'public', 'index.html')
@@ -31,8 +33,7 @@ app.get('/download', (req, res) =>{
 })
 
 
-const PORT = 5000;
 
-app.listen(PORT, () =>{
-    console.log(`Server started on port ${PORT}...`);
+app.listen(5000, () =>{
+    console.log(`Server started on port 5000...`);
 })
