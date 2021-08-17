@@ -39,8 +39,6 @@ app.get('/download', (req, res) =>{
 
 })
 
-let PORT = 5050
-
-app.listen(5050, () =>{
-    console.log(`Server started on port ${PORT}...`);
+app.listen(5500, () =>{
+    console.log(`Server started...`);
 })
